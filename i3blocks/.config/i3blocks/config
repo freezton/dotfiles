@@ -1,0 +1,41 @@
+#[icon]
+#command=echo "$(cat ~/Downloads/ganzhubas.svg"
+
+[ganzhubas]
+#command=~/dotfiles/label.sh
+command=python ~/label.py
+interval=1
+
+# Wi-Fi connection (display SSID + IP)
+[wifi]
+command=iwgetid -r && ip -4 addr show $(iw dev | awk '$1=="Interface"{print $2}') | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
+interval=10
+
+# Ethernet (display interface name + IP)
+[ethernet]
+command=ip -4 addr show $(ip route | awk '/default/ {print $5}') | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
+interval=10
+
+# Battery Percentage
+[battery]
+command=cat /sys/class/power_supply/BAT0/capacity
+interval=30
+label=Butt=
+
+# Monitor Brightness
+[brightness]
+command=cat /sys/class/backlight/*/brightness
+interval=1
+signal=10
+
+# Sound Level
+[volume]
+command=amixer get Master | awk -F'[][]' '/%/ {print $2; exit}'
+interval=2
+signal=1
+
+# Date and Time
+[time]
+command=date '+%A, %d %B %Y %H:%M'
+interval=1
+
