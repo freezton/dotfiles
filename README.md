@@ -1,1 +1,2 @@
-# Dotfiles for my arch linux environment
+# Dotfiles
+My dotfiles and configs for arch linux 
