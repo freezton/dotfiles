@@ -1,10 +1,14 @@
 #[icon]
 #command=echo "$(cat ~/Downloads/ganzhubas.svg"
 
+#separator_block_width=-16
+#markup=pango
+
 [ganzhubas]
 #command=~/dotfiles/label.sh
-command=python ~/label.py
+command=python ~/dotfiles/label.py
 interval=1
+markup=pango
 
 # Wi-Fi connection (display SSID + IP)
 [wifi]
